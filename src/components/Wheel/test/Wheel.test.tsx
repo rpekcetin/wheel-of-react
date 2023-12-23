@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import Wheel from '../Wheel'
+import Wheel from '../main/Wheel'
 
 describe('Wheel', () => {
     test('render the wheel component', () => {

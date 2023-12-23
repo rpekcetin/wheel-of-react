@@ -1,31 +1,22 @@
 import React, { useState, useRef, useEffect } from 'react';
+import '../css/Wheel.css'
+import Drop from '../image/drop.png'
+import { PieChartProps } from '../types/types';
+import "@fontsource/quicksand";
 
-type PieChartProps = {
-  data?: { color: string; text: string }[];
-  selectedDataIndex?: number;
-  onFinishedRotation?: () => void;
-};
+const PieChart: React.FC<PieChartProps> = ({ size,wheelData, selectedDataIndex, onFinishedRotation, fontSize, fontWeight, fontFamily }) => {
 
-const PieChart: React.FC<PieChartProps> = ({ selectedDataIndex, onFinishedRotation }) => {
-
-  const data = [
-    { color: 'red', text: 'Text 1' },
-    { color: 'blue', text: 'Text 2' },
-    { color: 'green', text: 'Text 3' },
-    { color: 'yellow', text: 'Text 4' },
-    { color: 'orange', text: 'Text 5' },
-    { color: 'pink', text: 'Text 6' },
-    { color: 'purple', text: 'Text 7' },
-    { color: 'grey', text: 'Text 8' },
-    { color: 'black', text: 'Text 9' },
-    { color: 'cyan', text: 'Text 10' },
-    { color: 'lemon', text: 'Text 11' },
-    { color: 'cream', text: 'Text 12' },
-    // Add more objects for more slices
+  const exampleData = [
+    { color: '#fa7890', text: 'Text 1' },
+    { color: '#7896fa', text: 'Text 2' },
+    { color: '#78fa78', text: 'Text 3' },
+    { color: '#faf378', text: 'Text 4' },
+    { color: '#facd5c', text: 'Text 5' },
+    { color: '#fa78dc', text: 'Text 6' },
   ];
-
-  const size = 200; // Size of the SVG
-  const radius = size / 2;
+  const data = wheelData ?? exampleData
+  const sizes = 250;
+  const radius = sizes / 2;
   const total = data.length;
   const sliceDegree = 360 / total;
   const pieRef = useRef<SVGSVGElement>(null);
@@ -42,8 +33,8 @@ const PieChart: React.FC<PieChartProps> = ({ selectedDataIndex, onFinishedRotati
     if (isAnimating || !pieRef.current) return;
 
     setIsAnimating(true);
-
-    const targetAngle = 360 - (selectedDataIndex ?? 0 * sliceDegree) - (sliceDegree / 2);
+    const max: number = data.length
+    const targetAngle = 360 - (selectedDataIndex ?? Math.floor(Math.random() * (max - 1)) * sliceDegree) - (sliceDegree / 2);
     const rotation = currentRotation % 360;
     const additionalRotation = rotation > targetAngle ? 360 - rotation + targetAngle : targetAngle - rotation;
     const newRotation = currentRotation + additionalRotation + 360 * 3; // Additional 3 full spins
@@ -59,12 +50,12 @@ const PieChart: React.FC<PieChartProps> = ({ selectedDataIndex, onFinishedRotati
   };
 
   return (
-    <>
+    <div className='container'>
       <svg
         ref={pieRef}
-        width={size}
-        height={size}
-        viewBox={`0 0 ${size} ${size}`}
+        width={sizes}
+        height={sizes}
+        viewBox={`0 0 ${sizes} ${sizes}`}
         style={{ transformOrigin: 'center' }}
       >
         {data.map((item, index) => {
@@ -90,8 +81,10 @@ const PieChart: React.FC<PieChartProps> = ({ selectedDataIndex, onFinishedRotati
                 y={textY}
                 textAnchor="middle"
                 dominantBaseline="central"
-                fontSize="10"
-                fill='white'
+                fontSize={fontSize ?? '14px'}
+                fill='black'
+                fontWeight={fontWeight}
+                fontFamily={fontFamily ?? 'QuickSand'}
                 style={{ transform: `rotate(${startAngle + sliceDegree / 2}deg)`, transformOrigin: `${textX}px ${textY}px` }}
               >
                 {item.text}
@@ -100,8 +93,10 @@ const PieChart: React.FC<PieChartProps> = ({ selectedDataIndex, onFinishedRotati
           );
         })}
       </svg>
-      <button onClick={startRotation} disabled={isAnimating}>Spin</button>
-    </>
+      <button className='spin_button' onClick={startRotation} disabled={isAnimating}>
+        <img src={Drop} style={{ marginLeft: '8px', width: '32px', transform: 'rotate(90deg)' }} />
+      </button>
+    </div>
   );
 };
 

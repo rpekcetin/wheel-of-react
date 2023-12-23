@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Wheel from '../Wheel';
+import Wheel from '../main/Wheel';
 
 const meta: any = {
     title: 'wheel-of-react/wheel',

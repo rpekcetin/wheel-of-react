@@ -1,8 +1,13 @@
 import React from 'react';
 
-interface ButtonProps {
-    label: string;
-}
-declare const Button: (props: ButtonProps) => React.JSX.Element;
+type PieChartProps = {
+    data?: {
+        color: string;
+        text: string;
+    }[];
+    selectedDataIndex?: number;
+    onFinishedRotation?: () => void;
+};
+declare const PieChart: React.FC<PieChartProps>;
 
-export { Button };
+export { PieChart as Wheel };

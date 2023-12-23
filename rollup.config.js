@@ -3,7 +3,7 @@ import commonjs from '@rollup/plugin-commonjs'
 import typescript from '@rollup/plugin-typescript'
 import dts from 'rollup-plugin-dts'
 import postcss from 'rollup-plugin-postcss'
-
+import image from '@rollup/plugin-image'
 const packageJson = require('./package.json')
 
 export default [
@@ -25,7 +25,8 @@ export default [
             resolve(),
             commonjs(),
             typescript({ tsconfig: './tsconfig.json' }),
-            postcss()
+            postcss(),
+            image()
         ]
     },
     {

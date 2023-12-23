@@ -1,0 +1,20 @@
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spin_button {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
