@@ -1,6 +1,6 @@
 {
   "name": "wheel-of-react",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "wheel of react",
   "scripts": {
     "rollup": "rollup -c --bundleConfigAsCjs",
@@ -9,6 +9,7 @@
     "build-storybook": "storybook build"
   },
   "author": "Recep",
+  "keywords": ["Wheel","React wheel","piechart","react piechart","react"],
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.23.6",
