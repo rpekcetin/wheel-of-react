@@ -2,6 +2,10 @@
 
 The wheel of react package is a wheel that randomly selects one of the given data.
 
+Code;
+
+![Alt text for the image](https://project-storage-phi.vercel.app/wheel-code.png)
+
 Image;
 
 ![Alt text for the image](https://project-storage-phi.vercel.app/wheel.png)
