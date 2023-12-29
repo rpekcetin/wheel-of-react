@@ -27,7 +27,9 @@ export default [
             typescript({ tsconfig: './tsconfig.json' }),
             postcss(),
             image()
-        ]
+        ],
+        external: ["react", "react-dom", "@fontsource/quicksand"],
+
     },
     {
         input: 'dist/esm/types/index.d.ts',

@@ -4,7 +4,7 @@ import Drop from '../image/drop.png'
 import { PieChartProps } from '../types/types';
 import "@fontsource/quicksand";
 
-const PieChart: React.FC<PieChartProps> = ({ size, wheelData, selectedDataIndex, onFinishedRotation, fontSize, fontWeight, fontFamily }) => {
+const Wheel: React.FC<PieChartProps> = ({ size, wheelData, selectedDataIndex, onFinishedRotation, fontSize, fontWeight, fontFamily }) => {
 
   const exampleData = [
     { color: '#fa7890', text: 'Text 1' },
@@ -15,7 +15,7 @@ const PieChart: React.FC<PieChartProps> = ({ size, wheelData, selectedDataIndex,
     { color: '#fa78dc', text: 'Text 6' },
   ];
   const data = wheelData ?? exampleData
-  const sizes = 250;
+  const sizes = size ?? 250;
   const radius = sizes / 2;
   const total = data.length;
   const sliceDegree = 360 / total;
@@ -52,7 +52,7 @@ const PieChart: React.FC<PieChartProps> = ({ size, wheelData, selectedDataIndex,
   return (
     <div className='container'>
       <svg
-        ref={pieRef}
+        ref={pieRef ?? null}
         width={sizes}
         height={sizes}
         viewBox={`0 0 ${sizes} ${sizes}`}
@@ -100,7 +100,7 @@ const PieChart: React.FC<PieChartProps> = ({ size, wheelData, selectedDataIndex,
   );
 };
 
-export default PieChart;
+export default Wheel;
 
 // const data = [
 //     { color: 'red', text: 'Text 1' },

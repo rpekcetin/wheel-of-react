@@ -1,6 +1,6 @@
 export type PieChartProps = {
     wheelData?: { color: string; text: string }[];
-    size: number;
+    size?: number;
     selectedDataIndex?: number;
     fontWeight?: string | number;
     fontFamily?: string;
